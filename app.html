@@ -164,6 +164,9 @@ h1, h2 { text-wrap: balance; margin: 0; }
 .notes { border-top: 1px solid var(--line); padding-block: 24px 48px; display: grid; gap: 8px; font-family: var(--font-serif); font-size: 17px; color: var(--ink-2); }
 .notes p { margin: 0; max-width: 72ch; }
 .notes .eyebrow { margin-bottom: 4px; }
+.notes .fine { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 16px; display: grid; gap: 6px; }
+.notes .fine p { font-family: var(--font-display); font-size: 12px; line-height: 1.6; color: var(--ink-3); }
+.notes .fine .eyebrow { font-size: 11px; margin: 0; }
 
 @media (max-width: 980px) { .fields { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 820px) { .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -242,6 +245,10 @@ h1, h2 { text-wrap: balance; margin: 0; }
         <p data-city="nyc">Levels are shown the way each studio names them on the class, so "Adv Beg" (advanced beginner) is grouped with Beg/Int. Spotlight, guest and pop up classes are special sessions with visiting teachers, companies and agencies, and they may be priced separately.</p>
         <p data-city="nyc">Not included: cancelled classes, kids and youth classes, livestreams, private lessons, crew rehearsals, and fitness classes like Pilates, yoga and stretch.</p>
         <p id="updatedNote"></p>
+        <div class="fine">
+          <div class="eyebrow">About Class Hop</div>
+          <p>Class Hop is an independent schedule guide from CR3W Talent LLC. It is not affiliated with, endorsed by, or sponsored by any studio scheduling software or any studio listed. Class times, teachers and details come from each studio's own public online schedule, and are refreshed nightly. Schedules can change at any time, so always confirm with the studio before you go. All bookings, payments, cancellations and waivers are handled directly by the studio, not by CR3W Talent. Teacher Instagram links are shared for discovery only and may not always be current. Studio names, class names and trademarks belong to their owners. Your Class Hop subscription covers access to this guide only and does not include any classes. Are you a studio or teacher who would like a listing changed or removed? Email <a href="mailto:claire@cr3wtalent.com">claire@cr3wtalent.com</a> and we will take care of it promptly.</p>
+        </div>
       </div>
     </div>
   </section>
