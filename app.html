@@ -130,9 +130,6 @@ h1, h2 { text-wrap: balance; margin: 0; }
 .dayhead .k { margin-left: auto; font-weight: 600; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 
 .row { position: relative; display: grid; grid-template-columns: 84px minmax(0, 1fr) auto; gap: 6px 20px; padding: 14px 10px; margin-inline: -10px; border-bottom: 1px solid var(--line); align-items: start; transition: background .15s; }
-.row:hover { background: var(--raised); }
-.row-link { position: absolute; inset: 0; z-index: 1; }
-.row-link:focus-visible { outline-offset: -2px; }
 .who, .book { position: relative; z-index: 2; }
 .time { font-weight: 800; font-size: 16px; font-variant-numeric: tabular-nums; padding-top: 1px; }
 .time small { display: block; font-weight: 500; font-size: 12px; color: var(--ink-3); }
@@ -156,7 +153,8 @@ h1, h2 { text-wrap: balance; margin: 0; }
 .lvl.dim { color: var(--ink-3); border-style: dashed; }
 .book { font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; background: var(--accent-fill); color: var(--on-accent); padding: 7px 12px; white-space: nowrap; }
 .book.alt { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-.row:hover .book { filter: brightness(1.08); }
+.book:hover { filter: brightness(1.08); }
+.book.alt:hover { background: var(--accent); color: var(--on-accent); filter: none; }
 
 .empty { padding-block: 48px; text-align: center; display: grid; gap: 12px; justify-items: center; }
 .empty p { font-family: var(--font-serif); font-size: 21px; color: var(--ink-2); margin: 0; }
@@ -235,7 +233,7 @@ h1, h2 { text-wrap: balance; margin: 0; }
 
       <div class="notes">
         <div class="eyebrow">Before you go</div>
-        <p>Tap any class to open its sign up page at the studio in a new tab. You'll sign in with your Mindbody account for that studio to book and pay. If a class says "Find at studio", it opens that studio's schedule for the day instead. Some studios only open booking about a week ahead, so classes further out may say "Find at studio" until booking opens.</p>
+        <p>Tap Sign up on any class to open its sign up page at the studio in a new tab. You'll sign in with your Mindbody account for that studio to book and pay. If a class shows "Find at studio" instead, that button opens that studio's schedule for the day instead. Some studios only open booking about a week ahead, so classes further out may say "Find at studio" until booking opens.</p>
         <p>Tap a teacher's name to see all of their classes, or their @handle to open their Instagram and check out their style before you go. Teachers without a handle haven't been matched to an account yet.</p>
         <p>Studios confirm teachers the day before, so subs happen. Check the studio's app or site before you head out, and book ahead where you can, since popular classes sell out.</p>
         <p data-city="la">* Millennium doesn't list a level on most classes. The studio says they run at an intermediate to advanced level unless the class name says otherwise.</p>
@@ -374,10 +372,10 @@ h1, h2 { text-wrap: balance; margin: 0; }
           : tl && tl.web ? `<a class="handle" href="${esc(tl.web)}" target="_blank" rel="noopener">Website ↗</a>` : "";
         const who = r[4] === "TBA" ? `<span class="who tba">Teacher TBA</span>` : `<span class="whorow"><button type="button" class="who" data-teacher="${esc(r[4])}" title="Show all classes with ${esc(r[4])}">${esc(r[4])}</button>${handle}</span>`;
         const su = signupUrl(r);
-        html += `<article class="row"><a class="row-link" href="${esc(su.url)}" target="_blank" rel="noopener" aria-label="${su.exact ? "Sign up for" : "Find at studio:"} ${esc(r[3])} with ${esc(r[4])}, ${fmtT(r[1])}"></a><div class="time">${fmtT(r[1])}<small>${r[7] ? r[7] + " min" : ""}</small></div>
+        html += `<article class="row"><div class="time">${fmtT(r[1])}<small>${r[7] ? r[7] + " min" : ""}</small></div>
           <div class="main"><div class="cls">${esc(r[3])}</div>${who}<div class="meta"><b>${esc(st.name)}</b>${r[8] ? " · " + esc(r[8]) : ""} · ${esc(st.area)}</div>${post ? `<a class="ig" href="${esc(post)}" target="_blank" rel="noopener">Studio's Instagram post ↗</a>` : ""}</div>
           <div class="side"><div class="tags">${badge ? `<span class="tag spc">${badge}</span>` : ""}<span class="tag" style="background:var(--s${r[2]});color:var(--s${r[2]}i)">${esc(D.styles[r[2]])}</span><span class="tag lvl${r[6] === "Not listed" ? " dim" : ""}">${esc(lvl)}</span></div>
-          <a class="book${su.exact ? "" : " alt"}" href="${esc(su.url)}" target="_blank" rel="noopener" tabindex="-1">${su.exact ? "Sign up ↗" : "Find at studio ↗"}</a></div></article>`;
+          <a class="book${su.exact ? "" : " alt"}" href="${esc(su.url)}" target="_blank" rel="noopener" aria-label="${su.exact ? "Sign up for" : "Find at studio:"} ${esc(r[3])} with ${esc(r[4])}, ${fmtT(r[1])}">${su.exact ? "Sign up ↗" : "Find at studio ↗"}</a></div></article>`;
       }
       html += `</section>`;
     }
